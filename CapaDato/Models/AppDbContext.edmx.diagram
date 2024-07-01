@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f0824f6c4e5d4fa985128a58e968dfb2" Name="Diagram1" >
+        <EntityTypeShape EntityType="AppDbContext.Usuario" Width="1.5" PointX="3.125" PointY="1.625" />
+        <EntityTypeShape EntityType="AppDbContext.Prioridad" Width="1.5" PointX="6.75" PointY="0.625" />
+        <EntityTypeShape EntityType="AppDbContext.Estado" Width="1.5" PointX="12" PointY="2.125" />
+        <EntityTypeShape EntityType="AppDbContext.Categoria" Width="1.5" PointX="11.625" PointY="4.875" />
+        <EntityTypeShape EntityType="AppDbContext.Comentario" Width="1.5" PointX="2.875" PointY="6.25" />
+        <EntityTypeShape EntityType="AppDbContext.Tarea" Width="1.5" PointX="7.125" PointY="4.375" />
+        <AssociationConnector Association="AppDbContext.UsuarioComentario" />
+        <AssociationConnector Association="AppDbContext.PrioridadTarea" />
+        <AssociationConnector Association="AppDbContext.EstadoTarea" />
+        <AssociationConnector Association="AppDbContext.CategoriaTarea" />
+        <AssociationConnector Association="AppDbContext.TareaComentario" />
+        <AssociationConnector Association="AppDbContext.UsuarioTarea" />
+        <AssociationConnector Association="AppDbContext.UsuarioTarea1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
