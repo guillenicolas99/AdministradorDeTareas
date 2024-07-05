@@ -36,8 +36,9 @@ namespace AdministadorDeTareasWeb.Controllers
                 UsuarioCreador = x.UsuarioPropietario.Nombre,
                 UsuarioAsignado = x.UsuarioAsignado.Nombre,
             }).ToList();
+
             var listaTareas = _tareaService.GetAll();
-            return View(tareas);
+            return View(listaTareas);
         }
 
         [HttpGet]
@@ -81,6 +82,43 @@ namespace AdministadorDeTareasWeb.Controllers
                 ViewBag.errMessage = "No  se pudo crear la tarea";
                 return View(tarea);
             } 
+        }
+
+        public ActionResult Edit (int id)
+        {
+            var tarea = _tareaService.FindId(id);
+            if(tarea != null)
+            {
+                ViewBag.Prioridades = new SelectList(_context.Prioridades, "Id", "Nombre", tarea.PrioridadId);
+                ViewBag.Estados = new SelectList(_context.Estados, "Id", "Nombre", tarea.EstadoId);
+                ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nombre", tarea.CategoriaId);
+                ViewBag.Usuarios = new SelectList(_context.Usuarios, "Id", "Nombre", tarea.UsuarioAsignadoId);
+                return View(tarea);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details (int id)
+        {
+            var tarea = _tareaService.FindId (id);
+            if(tarea != null)
+            {
+                return View(tarea);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var tarea = _tareaService.FindId(id);
+            if (tarea != null)
+            {
+                return View(tarea);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

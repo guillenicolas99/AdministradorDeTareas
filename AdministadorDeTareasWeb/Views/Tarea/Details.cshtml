@@ -1,0 +1,88 @@
+﻿@model CapaDato.Models.Tarea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>Tarea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEstimadaEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEstimadaEntrega)
+        </dd>
+
+        <dt>
+            Prioridad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridad.Nombre)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Nombre)
+        </dd>
+
+        <dt>
+            Categoría
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nombre)
+        </dd>
+
+        <dt>
+            Creado por
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioPropietario.Nombre)
+        </dd>
+
+        <dt>
+            Responsable
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAsignado.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Volver", "Index", "Tarea", htmlAttributes: new {@class = "btn btn-outline-danger"})
+</p>
