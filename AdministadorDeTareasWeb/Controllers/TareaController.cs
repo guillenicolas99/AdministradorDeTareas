@@ -1,4 +1,6 @@
-﻿using CapaDato.Models;
+﻿using AutoMapper;
+using CapaDato.Models;
+using CapaDto.DTO;
 using CapaOperaciones;
 using System;
 using System.Collections.Generic;
@@ -22,8 +24,20 @@ namespace AdministadorDeTareasWeb.Controllers
         // GET: Tarea
         public ActionResult Index()
         {
+            var tareas = _tareaService.GetAll().Select(x => new TareaDto
+            {
+                Id = x.Id,
+                Titulo = x.Titulo,
+                Descripcion = x.Descripcion,
+                FechaEntrega = x.FechaEstimadaEntrega,
+                Categorias = x.Categoria.Nombre,
+                Prioridades = x.Prioridad.Nombre,
+                Estados = x.Prioridad.Nombre,
+                UsuarioCreador = x.UsuarioPropietario.Nombre,
+                UsuarioAsignado = x.UsuarioAsignado.Nombre,
+            }).ToList();
             var listaTareas = _tareaService.GetAll();
-            return View(listaTareas);
+            return View(tareas);
         }
 
         [HttpGet]

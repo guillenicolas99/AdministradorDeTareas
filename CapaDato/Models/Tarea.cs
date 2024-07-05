@@ -11,7 +11,8 @@ namespace CapaDato.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Tarea
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace CapaDato.Models
         }
     
         public int Id { get; set; }
+
+        [MinLength(3, ErrorMessage = "El título debe contener al menos 3 caracteres")]
+        [Required(ErrorMessage = "El título es obligatorio")]
         public string Titulo { get; set; }
+
+        [MinLength(3, ErrorMessage = "La descripción debe contener al menos 3 caracteres")]
+        [Required(ErrorMessage = "La descripción es obligatorio")]
         public string Descripcion { get; set; }
         public string FechaCreacion { get; set; }
         public string FechaEstimadaEntrega { get; set; }

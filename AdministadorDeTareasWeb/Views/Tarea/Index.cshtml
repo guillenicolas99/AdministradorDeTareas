@@ -23,30 +23,26 @@ else
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Fecha de entrega
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaCreacion)
+                Prioridad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaEstimadaEntrega)
+                Estado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrioridadId)
+                Categoría
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstadoId)
+                Creado por
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoriaId)
+                Responsable
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UsuarioPropietarioId)
+                Acciones
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioAsignadoId)
-            </th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -56,33 +52,27 @@ else
                     @Html.DisplayFor(modelItem => item.Titulo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaCreacion)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.FechaEstimadaEntrega)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PrioridadId)
+                    @Html.DisplayFor(modelItem => item.Prioridad.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EstadoId)
+                    @Html.DisplayFor(modelItem => item.Estado.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoriaId)
+                    @Html.DisplayFor(modelItem => item.Categoria.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UsuarioPropietarioId)
+                    @Html.DisplayFor(modelItem => item.UsuarioPropietario.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UsuarioAsignadoId)
+                    @Html.DisplayFor(modelItem => item.UsuarioAsignado.Nombre)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new {@class = "btn btn-outline-warning"}) |
+                    @Html.ActionLink("Info", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-secondary" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-danger" })
                 </td>
             </tr>
         }

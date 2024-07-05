@@ -46,10 +46,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,6 +175,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AutoMapperProfile\MapperAdministradorTareasWeb.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
@@ -310,6 +318,10 @@
     <ProjectReference Include="..\CapaDato\CapaDato.csproj">
       <Project>{76035799-BF92-4283-9CBB-6AC9A858F3B0}</Project>
       <Name>CapaDato</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaDto\CapaDto.csproj">
+      <Project>{02490705-BBA0-4488-83C0-DF581A451822}</Project>
+      <Name>CapaDto</Name>
     </ProjectReference>
     <ProjectReference Include="..\CapaOperaciones\CapaOperaciones.csproj">
       <Project>{CA51DE61-12B3-4B4F-AE77-FB5253CD2867}</Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdministadorDeTareasWeb.AutoMapperProfile;
+using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,7 @@ namespace AdministadorDeTareasWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Mapper.Initialize(x => x.AddProfile(new MapperAdministradorTareasWeb()));
         }
     }
 }
