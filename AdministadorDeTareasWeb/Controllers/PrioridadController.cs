@@ -1,4 +1,5 @@
 ﻿using CapaDato.Models;
+using CapaDto.DTO;
 using CapaOperaciones;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,14 @@ namespace AdministadorDeTareasWeb.Controllers
         // GET: Prioridad
         public ActionResult Index()
         {
+            var prioridades = _prioridadService.GetAll().Select(x => new PrioridadDto
+            {
+                Id = x.Id,
+                Nombre = x.Nombre,
+                Clase = x.Clase,
+                
+            }).ToList();
+
             var listaPrioridades = _prioridadService.GetAll();
             return View(listaPrioridades);
         }

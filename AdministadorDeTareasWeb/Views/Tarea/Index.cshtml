@@ -5,10 +5,20 @@
 }
 
 <h2>Index</h2>
+<row md-3>
+    <p>
+        @Html.ActionLink("Crear Tarea", "Create", "Tarea", htmlAttributes: new { @class = "btn btn-primary" })
+    </p>
 
-<p>
-    @Html.ActionLink("Crear Tarea", "Create", "Tarea", htmlAttributes: new { @class = "btn btn-primary"})
-</p>
+    <div>
+        <a class="btn btn-secondary fw-bold" target="_blank" href =" @Url.Action("VisualizadorReport.aspx", "ViewReport", new { Reporte = "RptTarea.rdlc" })">
+                <i class="fas fa-print"></i>Imprimir Lista de Tareas
+        </a>
+    </div>
+       
+   
+
+</row>
 
 @if (Model.Count() == 0)
 {

@@ -8,6 +8,13 @@
 <p>
     @Html.ActionLink("Agregar", "Create", "Prioridad", htmlAttributes: new {@class = "btn btn-primary"})
 </p>
+
+<div>
+    <a class="btn btn-secondary fw-bold" target="_blank" href=" @Url.Action("VisualizadorReport.aspx", "ViewReport", new { Reporte = "RptPrioridad.rdlc" })">
+        <i class="fas fa-print"></i>Imprimir Lista de Prioridades
+    </a>
+</div>
+
 <table class="table table-hover">
     <tr>
         <th>

@@ -1,5 +1,6 @@
 ﻿using AdministadorDeTareasWeb.Models;
 using CapaDato.Models;
+using CapaDto.DTO;
 using CapaOperaciones;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,12 @@ namespace AdministadorDeTareasWeb.Controllers
         // GET: Categoria
         public ActionResult Index()
         {
+            var categorias = _categoriaService.GetAll().Select(x => new CategoriaDto
+            {
+                Id = x.Id,
+                Nombre = x.Nombre,
+            }).ToList();
+
             var listaCategoria = _categoriaService.GetAll();
             return View(listaCategoria);
         }

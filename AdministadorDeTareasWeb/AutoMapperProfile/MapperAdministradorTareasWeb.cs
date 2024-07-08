@@ -13,6 +13,8 @@ namespace AdministadorDeTareasWeb.AutoMapperProfile
         public MapperAdministradorTareasWeb()
         {
             CreateMap<Tarea, TareaDto>();
+            CreateMap<Prioridad, PrioridadDto>();
+            CreateMap<Categoria, CategoriaDto>();
         }
     }
 }

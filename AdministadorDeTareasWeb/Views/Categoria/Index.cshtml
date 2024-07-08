@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<CapaDato.Models.Categoria>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index Categoria";
     int i = 1;
 }
 
 <p>
     @Html.ActionLink("Agregar Categoría", "Create", "Categoria    ", htmlAttributes: new { @class = "btn btn-primary"})
 </p>
+
+<div>
+    <a class="btn btn-secondary fw-bold" target="_blank" href=" @Url.Action("VisualizadorReport.aspx", "ViewReport", new { Reporte = "RptCategoria.rdlc" })">
+        <i class="fas fa-print"></i>Imprimir Lista de Categorias
+    </a>
+</div>
 
 
 
