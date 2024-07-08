@@ -24,21 +24,14 @@ namespace AdministadorDeTareasWeb.Controllers
         // GET: Tarea
         public ActionResult Index()
         {
-            var tareas = _tareaService.GetAll().Select(x => new TareaDto
-            {
-                Id = x.Id,
-                Titulo = x.Titulo,
-                Descripcion = x.Descripcion,
-                FechaEntrega = x.FechaEstimadaEntrega,
-                Categorias = x.Categoria.Nombre,
-                Prioridades = x.Prioridad.Nombre,
-                Estados = x.Prioridad.Nombre,
-                UsuarioCreador = x.UsuarioPropietario.Nombre,
-                UsuarioAsignado = x.UsuarioAsignado.Nombre,
-            }).ToList();
+            var tareas = Mapper.Map<ICollection<TareaDto>>(_tareaService.GetAll()).ToList();
 
-            var listaTareas = _tareaService.GetAll();
-            return View(listaTareas);
+            var indexTarea = new IndexTareaVM();
+            indexTarea.Tareas = tareas;
+
+
+            ViewBag.listaTareas = indexTarea.Tareas.ToList();
+            return View(indexTarea);
         }
 
         [HttpGet]

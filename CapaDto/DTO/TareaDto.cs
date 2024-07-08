@@ -10,9 +10,9 @@ namespace CapaDto.DTO
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public string Descripcion { get; set; }
-        public string FechaCreacion { get; set; }
-        public string FechaEntrega { get; set; }
+        //public string Descripcion { get; set; }
+        //public string FechaCreacion { get; set; }
+        public string FechaEstimadaEntrega { get; set; }
         public string Categorias { get; set; }
         public string Prioridades { get; set; }
         public string Estados { get; set; }
@@ -22,6 +22,10 @@ namespace CapaDto.DTO
 
     public class IndexTareaVM
     {
+        public IndexTareaVM()
+        {
+            Tareas = new List<TareaDto>();
+        }
         public List<TareaDto> Tareas { get; set; }
     }
 }
