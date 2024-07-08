@@ -10,12 +10,10 @@ namespace CapaDto.DTO
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        //public string Descripcion { get; set; }
-        //public string FechaCreacion { get; set; }
         public string FechaEstimadaEntrega { get; set; }
-        public string Categorias { get; set; }
-        public string Prioridades { get; set; }
-        public string Estados { get; set; }
+        public string Categoria { get; set; }
+        public string Prioridad { get; set; }
+        public string Estado { get; set; }
         public string UsuarioCreador { get; set; }
         public string UsuarioAsignado { get; set; }
     }
@@ -27,5 +25,14 @@ namespace CapaDto.DTO
             Tareas = new List<TareaDto>();
         }
         public List<TareaDto> Tareas { get; set; }
+    }
+
+    public class FiltrarTareasVM
+    {
+        public string Titulo { get; set; }
+        public string EstadoID { get; set; }
+        public string PrioridadID { get; set; }
+        public string CategoriaID { get; set; }
+        public string ResponsableID { get; set; }
     }
 }

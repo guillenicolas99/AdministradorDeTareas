@@ -15,9 +15,9 @@ namespace AdministadorDeTareasWeb.AutoMapperProfile
         {
 
             CreateMap<Tarea, TareaDto>()
-                            .ForMember(dest => dest.Categorias, opts => opts.MapFrom(src => src.Categoria.Nombre))
-                            .ForMember(dest => dest.Prioridades, opts => opts.MapFrom(src => src.Prioridad.Nombre))
-                            .ForMember(dest => dest.Estados, opts => opts.MapFrom(src => src.Estado.Nombre))
+                            .ForMember(dest => dest.Categoria, opts => opts.MapFrom(src => src.Categoria.Nombre))
+                            .ForMember(dest => dest.Prioridad, opts => opts.MapFrom(src => src.Prioridad.Nombre))
+                            .ForMember(dest => dest.Estado, opts => opts.MapFrom(src => src.Estado.Nombre))
                             .ForMember(dest => dest.UsuarioCreador, opts => opts.MapFrom(src => src.UsuarioPropietario.Nombre))
                             .ForMember(dest => dest.UsuarioAsignado, opts => opts.MapFrom(src => src.UsuarioAsignado.Nombre))
                             ;

@@ -5,6 +5,7 @@ using CapaOperaciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,17 +22,33 @@ namespace AdministadorDeTareasWeb.Controllers
             _tareaService = new TareaService(_context);
         }
 
-        // GET: Tarea
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(FiltrarTareasVM filtro)
         {
+            if (filtro != null && (filtro.Titulo != null || filtro.EstadoID != null || filtro.PrioridadID != null || filtro.CategoriaID != null || filtro.ResponsableID != null))
+            {
+                var tareasFilter = _tareaService.GetTareasFilter(filtro);
+                var indexTarea = new IndexTareaVM
+                {
+                    Tareas = tareasFilter
+                };
+                return View(indexTarea);
+            }
+            
             var tareas = Mapper.Map<ICollection<TareaDto>>(_tareaService.GetAll()).ToList();
+            var indexTareas = new IndexTareaVM();
+            indexTareas.Tareas = tareas;
+            return View(indexTareas);
 
-            var indexTarea = new IndexTareaVM();
-            indexTarea.Tareas = tareas;
+        }
 
-
-            ViewBag.listaTareas = indexTarea.Tareas.ToList();
-            return View(indexTarea);
+        [HttpGet]
+        public ActionResult FiltrarTareas(FiltrarTareasVM filter)
+        {
+            var tareas = _tareaService.GetTareasFilter(filter);
+            var model = new IndexTareaVM { Tareas = tareas };
+            ViewBag.filter = filter;
+            return View(model);
         }
 
         [HttpGet]
