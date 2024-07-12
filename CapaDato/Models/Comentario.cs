@@ -11,10 +11,13 @@ namespace CapaDato.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Comentario
     {
         public int Id { get; set; }
+
+        [MinLength(1, ErrorMessage = "Escriba al menos un caracter")]
         public string ComentarioTxt { get; set; }
         public string FechaComentario { get; set; }
         public int UsuarioId { get; set; }

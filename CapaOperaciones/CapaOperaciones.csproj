@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaService.cs" />
+    <Compile Include="ComentarioService.cs" />
     <Compile Include="CRUDService.cs" />
     <Compile Include="EstadoService.cs" />
     <Compile Include="PrioridadService.cs" />

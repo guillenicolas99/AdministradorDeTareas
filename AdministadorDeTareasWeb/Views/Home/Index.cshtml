@@ -14,6 +14,8 @@
                         <p>@ViewBag.categorias</p>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a href="Categoria/" class="@btnsClass">Lista</a>
+                            @*<a href="@Url.Action()" class="@btnsClass">Imprimir</a>*@
+                            <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptCategorias.rdlc"})" target="_blank" class="@btnsClass">Imprimir</a>
                             <a href="Categoria/Create" class="@btnsClass">Agregar</a>
                         </div>
                     </div>
@@ -28,6 +30,7 @@
                         <p>@ViewBag.tareas</p>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a href="Tarea/" class="@btnsClass">Lista</a>
+                            <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptTareas.rdlc"})" target="_blank" class="@btnsClass">Imprimir tareas</a>
                             <a href="Tarea/Create" class="@btnsClass">Agregar</a>
                         </div>
                     </div>
@@ -42,6 +45,7 @@
                         <p>@ViewBag.prioridades</p>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a href="Prioridad/" class="@btnsClass">Lista</a>
+                            <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptPrioridades.rdlc"})" target="_blank" class="@btnsClass">Imprimir</a>
                             <a href="Prioridad/Create" class="@btnsClass">Agregar</a>
                         </div>
                     </div>
@@ -56,6 +60,7 @@
                         <p>@ViewBag.estados</p>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a href="Estado/" class="@btnsClass">Lista</a>
+                            <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptEstados.rdlc"})" target="_blank" class="@btnsClass">Imprimir</a>
                             <a href="Estado/Create" class="@btnsClass">Agregar</a>
                         </div>
                     </div>
@@ -70,6 +75,7 @@
                         <p>@ViewBag.usuarios </p>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                             <a href="Usuario/" class="@btnsClass">Lista</a>
+                            <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptUsuarios.rdlc"})" target="_blank" class="@btnsClass">Imprimir</a>
                             <a href="Usuario/Create" class="@btnsClass">Agregar</a>
                         </div>
                     </div>

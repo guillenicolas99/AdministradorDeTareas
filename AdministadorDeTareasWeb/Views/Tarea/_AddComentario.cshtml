@@ -1,0 +1,28 @@
+﻿@model CapaDato.Models.Comentario
+
+@using (Html.BeginForm("AddComentario", "Tarea", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.TareaId)
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row mb-3">
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.ComentarioTxt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Comentar" } })
+                @Html.ValidationMessageFor(model => model.ComentarioTxt, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <input type="submit" value="Comentar" class="btn btn-primary d-inline-block" />
+            </div>
+        </div>
+
+        @if (ViewBag.errMessage != null)
+        {
+            <div class="alert alert-danger my-3" role="alert">
+                @ViewBag.errMessage
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    </div>
+}

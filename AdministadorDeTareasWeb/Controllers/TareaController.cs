@@ -15,16 +15,22 @@ namespace AdministadorDeTareasWeb.Controllers
     {
         private readonly AppDbContextContainer _context;
         private readonly TareaService _tareaService;
+        private readonly ComentarioService _comentarioService;
 
         public TareaController()
         {
             _context = new AppDbContextContainer();
             _tareaService = new TareaService(_context);
+            _comentarioService = new ComentarioService(_context);
         }
 
         [HttpGet]
         public ActionResult Index(FiltrarTareasVM filtro)
         {
+            ViewBag.Estados = new SelectList(_context.Estados, "Id", "Nombre");
+            ViewBag.Categorias = new SelectList(_context.Categorias, "Id", "Nombre");
+            ViewBag.Usuarios = new SelectList(_context.Usuarios, "Id", "Nombre");
+
             if (filtro != null && (filtro.Titulo != null || filtro.EstadoID != null || filtro.PrioridadID != null || filtro.CategoriaID != null || filtro.ResponsableID != null))
             {
                 var tareasFilter = _tareaService.GetTareasFilter(filtro);
@@ -34,7 +40,7 @@ namespace AdministadorDeTareasWeb.Controllers
                 };
                 return View(indexTarea);
             }
-            
+
             var tareas = Mapper.Map<ICollection<TareaDto>>(_tareaService.GetAll()).ToList();
             var indexTareas = new IndexTareaVM();
             indexTareas.Tareas = tareas;
@@ -66,7 +72,6 @@ namespace AdministadorDeTareasWeb.Controllers
         {
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     tarea.FechaCreacion = DateTime.Now.ToString();
@@ -118,6 +123,32 @@ namespace AdministadorDeTareasWeb.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult AddComentario(Comentario comentario)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    comentario.FechaComentario = DateTime.Now.ToString();
+                    comentario.UsuarioId = 1;
+                    _context.Comentarios.Add(comentario);
+                    _context.SaveChanges();
+                    return RedirectToAction("Details", "Tarea", new { id = comentario.TareaId });
+                }
+                ViewBag.errMessage = "No se pudo agregar comentario";
+                return RedirectToAction("Details", "Tarea", new { id = comentario.TareaId });
+
+            }
+            catch (Exception ex)
+            {
+                //ViewBag.dsads = ex.Message;
+                ViewBag.errMessage = $"No se pudo agregar comentario {ex.Message}";
+                return RedirectToAction("Details", "Tarea", new { id = comentario.TareaId });
+            }
+
         }
 
         public ActionResult Delete(int id)

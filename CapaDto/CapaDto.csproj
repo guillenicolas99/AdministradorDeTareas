@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\CategoriaDto.cs" />
+    <Compile Include="DTO\ComentarioDto.cs" />
     <Compile Include="DTO\TareaDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

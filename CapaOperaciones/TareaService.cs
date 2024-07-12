@@ -44,6 +44,49 @@ namespace CapaOperaciones
             return tareas;
         }
 
+        public List<TareaDto> ObtenerTareasPorEstado (int Id)
+        {
+            var paramList = new List<SqlParameter>();
 
+            paramList.Add(new SqlParameter("@EstadoID", Id));
+
+            var paramsName = string.Join(",", paramList.Select (p => p.ParameterName));
+            var tareas = _context.Database.SqlQuery<TareaDto>(
+                "[dbo].[ObtenerTareasPorEstado] @EstadoID",
+                paramList.ToArray()
+                ).ToList();
+
+            return tareas;
+        }
+
+        public List<TareaDto> ObtenerTareasPorCategoria(int CategriaID)
+        {
+            var paramList = new List<SqlParameter>();
+
+            paramList.Add(new SqlParameter("@CategoriaID", CategriaID));
+
+            var paramsName = string.Join(",", paramList.Select(p => p.ParameterName));
+            var tareas = _context.Database.SqlQuery<TareaDto>(
+                "[dbo].[ObtenerTareasPorCategoria] @CategoriaID",
+                paramList.ToArray()
+                ).ToList();
+
+            return tareas;
+        }
+
+        public List<TareaDto> ObtenerTareasPorResponsable(int responsableID)
+        {
+            var paramList = new List<SqlParameter>();
+
+            paramList.Add(new SqlParameter("@responsableID", responsableID));
+
+            var paramsName = string.Join(",", paramList.Select(p => p.ParameterName));
+            var tareas = _context.Database.SqlQuery<TareaDto>(
+                "[dbo].[ObtenerTareasPorResponsable] @responsableID",
+                paramList.ToArray()
+                ).ToList();
+
+            return tareas;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model CapaDato.Models.Tarea
+﻿@using CapaDato.Models
+@model CapaDato.Models.Tarea
 
 @{
     ViewBag.Title = "Details";
@@ -7,82 +8,97 @@
 <div>
     <h4>Tarea</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
+    <div class="row">
+        <div class="col-md-8">
 
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Titulo)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaEstimadaEntrega)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaEstimadaEntrega)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaCreacion)
-        </dd>
+                <dt>
+                    Prioridad
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaEstimadaEntrega)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Prioridad.Nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaEstimadaEntrega)
-        </dd>
+                <dt>
+                    Estado
+                </dt>
 
-        <dt>
-            Prioridad
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Estado.Nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Prioridad.Nombre)
-        </dd>
+                <dt>
+                    Categoría
+                </dt>
 
-        <dt>
-            Estado
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Categoria.Nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado.Nombre)
-        </dd>
+                <dt>
+                    Responsable
+                </dt>
 
-        <dt>
-            Categoría
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UsuarioAsignado.Nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.Nombre)
-        </dd>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Volver", "Index", "Tarea", htmlAttributes: new { @class = "btn btn-outline-danger" })
+                </p>
 
-        <dt>
-            Creado por
-        </dt>
+            </dl>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.UsuarioPropietario.Nombre)
-        </dd>
+        <div class="col-md-4">
+            @Html.Partial("_AddComentario", new Comentario { TareaId = Model.Id })
 
-        <dt>
-            Responsable
-        </dt>
+            <article class="card shadow my-1">
+                <div class="card-header">
+                    <p class="d-inline-block mb-0">
+                        <strong>@Html.DisplayFor(model => model.UsuarioPropietario.Nombre)</strong> -
+                        <small>@Html.DisplayFor(model => model.FechaCreacion)</small>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p>@Html.DisplayFor(model => model.Descripcion)</p>
+                </div>
+            </article>
 
-        <dd>
-            @Html.DisplayFor(model => model.UsuarioAsignado.Nombre)
-        </dd>
+            <h3>Comentarios</h3>
+            @foreach (var comentario in Model.Comentarios.OrderByDescending(x => x.FechaComentario))
+            {
+                <article class="card shadow my-2 mb-0">
+                    <div class="card-header">
+                        <p class="d-inline-block">
+                            <strong>@comentario.Usuario.Nombre</strong> -
+                            <small>@comentario.FechaComentario</small>
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p>@comentario.ComentarioTxt</p>
+                    </div>
+                </article>
+            }
+        </div>
 
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" }) |
-    @Html.ActionLink("Volver", "Index", "Tarea", htmlAttributes: new {@class = "btn btn-outline-danger"})
-</p>

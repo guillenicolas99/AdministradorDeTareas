@@ -1,0 +1,14 @@
+﻿@model CapaDto.DTO.IndexTareaVM
+
+@{
+    ViewBag.Title = "RptTareaEstado";
+}
+
+<h2>RptTareaEstado</h2>
+
+@using (Html.BeginForm("ReportVisualizador.aspx", "ViewReport", FormMethod.Get, htmlAttributes: new { @target = "_blank" }))
+{
+    @Html.Hidden("Reporte", "RptTareaEstado.rdlc")
+    @Html.DropDownListFor(s => s.Tareas, selectList: ViewBag.Estados as SelectList, optionLabel: "Seleccione", htmlAttributes: new { @class = "form-select" })
+    <button type="submit" class="btn btn-success">Imprimir</button>
+}

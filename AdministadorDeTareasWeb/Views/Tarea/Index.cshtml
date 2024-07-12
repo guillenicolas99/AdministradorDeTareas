@@ -5,9 +5,36 @@
     int i = 1;
 }
 
+<div class="my-3 d-flex flex-wrap gap-3">
+    <a href="@Url.Action("ReportVisualizador.aspx", "ViewReport", new {Reporte = "RptTareas.rdlc"})" target="_blank" class="btn btn-secondary">Imprimir tareas</a>
+
+    @* REPORTE PARA IMPRIMIR TAREAS SEGÚN EL ESTADO *@
+    @using (Html.BeginForm("ReportVisualizador.aspx", "ViewReport", FormMethod.Get, htmlAttributes: new { @target = "_blank" }))
+    {
+        @Html.Hidden("Reporte", "RptTareaEstado.rdlc")
+        @Html.DropDownListFor(s => s.Tareas, selectList: ViewBag.Estados as SelectList, optionLabel: "Seleccione el estado", htmlAttributes: new { @class = "form-select", @required = "required" })
+        <button type="submit" class="btn btn-success">Imprimir</button>
+    }
+
+    @* REPORTE PARA IMPRIMIR TAREAS SEGÚN LA CATEGORIA *@
+    @using (Html.BeginForm("ReportVisualizador.aspx", "ViewReport", FormMethod.Get, htmlAttributes: new { @target = "_blank" }))
+    {
+        @Html.Hidden("Reporte", "RptTareaCategoria.rdlc")
+        @Html.DropDownListFor(s => s.Tareas, selectList: ViewBag.Categorias as SelectList, optionLabel: "Seleccione la categoría", htmlAttributes: new { @class = "form-select", @required = "required" })
+        <button type="submit" class="btn btn-success">Imprimir</button>
+    }
+
+    @* REPORTE PARA IMPRIMIR TAREAS SEGÚN RESPONSABLE *@
+    @using (Html.BeginForm("ReportVisualizador.aspx", "ViewReport", FormMethod.Get, htmlAttributes: new { @target = "_blank" }))
+    {
+        @Html.Hidden("Reporte", "RptTareaResponsable.rdlc")
+        @Html.DropDownListFor(s => s.Tareas, selectList: ViewBag.Usuarios as SelectList, optionLabel: "Seleccione el responsable", htmlAttributes: new { @class = "form-select", @required = "required" })
+        <button type="submit" class="btn btn-success">Imprimir</button>
+    }
+</div>
+
 @using (Html.BeginForm("Index", "Tarea", FormMethod.Get, htmlAttributes: new { @class = "card shadow my-3" }))
 {
-    @Html.AntiForgeryToken()
     <div class="card-body d-flex flex-wrap gap-3">
 
         <div>

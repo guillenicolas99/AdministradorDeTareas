@@ -203,8 +203,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PrioridadController.cs" />
+    <Compile Include="Controllers\ReporteriaController.cs" />
     <Compile Include="Controllers\TareaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="DataSource\DataSetInforme.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetInforme.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,6 +254,17 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="DataSource\DataSetInforme.xsc">
+      <DependentUpon>DataSetInforme.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSource\DataSetInforme.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetInforme.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSource\DataSetInforme.xss">
+      <DependentUpon>DataSetInforme.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -330,6 +347,8 @@
     <Content Include="Views\Tarea\Details.cshtml" />
     <Content Include="Views\Tarea\Delete.cshtml" />
     <Content Include="Views\Tarea\FiltrarTareas.cshtml" />
+    <Content Include="Views\Tarea\_AddComentario.cshtml" />
+    <Content Include="Views\Reporteria\RptTareaEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,6 +393,15 @@
       <Project>{CA51DE61-12B3-4B4F-AE77-FB5253CD2867}</Project>
       <Name>CapaOperaciones</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Informes\RptUsuarios.rdlc" />
+    <EmbeddedResource Include="Informes\RptEstados.rdlc" />
+    <EmbeddedResource Include="Informes\RptPrioridades.rdlc" />
+    <EmbeddedResource Include="Informes\RptCategorias.rdlc" />
+    <EmbeddedResource Include="Informes\RptTareaCategoria.rdlc" />
+    <EmbeddedResource Include="Informes\RptTareaEstado.rdlc" />
+    <EmbeddedResource Include="Informes\RptTareas.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
